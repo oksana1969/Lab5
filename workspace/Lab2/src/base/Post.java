@@ -1,8 +1,9 @@
 package base;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Post {
+public class Post implements Comparable<Post>,Serializable{
 	private Date date;
 	private String content;
 	
@@ -29,9 +30,6 @@ public class Post {
 
 
 	
-	
-	
-	
 	public Post(Date date, String content) {
 		this.date=date;
 		this.content=content;
@@ -41,10 +39,8 @@ public class Post {
 	
 	public String toString(){
 		
-		
 		String s=date.toString() + '\n' + content;
 
-		
 		return s;
 
 	}
@@ -68,10 +64,7 @@ public class Post {
 		        check=true;
 		    }
 		
-		  /*if (this.getContent().equals((Post) o).getContent() {
-		        return true;
-		    }*/
-		 
+		  	 
 		 
 		return check;
 		
@@ -104,15 +97,20 @@ public class Post {
 	}
 
 
-		
-	
+
+	@Override
+	public int compareTo(Post p) {
+		int result = 0 ;
+		if (date.before(p.date) ){
+			result = 1;
+		}
+		else if (date.after(p.date)){
+			result = -1;
+		}
+		else if (date == p.date){
+			return result;
+		}
+		return result;
+	}
+
 }
-	
-	
-		
-	
-	
-
-
-
-
